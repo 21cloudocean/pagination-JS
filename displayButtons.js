@@ -1,5 +1,4 @@
 const displayButtons = (container, pages, activeIndex) => {
-  console.log("displayButtons");
   let btns = pages.map((_, pageIndex) => {
     return `<button class="page-btn ${
       activeIndex === pageIndex ? "active-btn" : "null"
@@ -7,7 +6,6 @@ const displayButtons = (container, pages, activeIndex) => {
   });
   btns.push(`<button class="next-btn">next</button>`);
   btns.unshift(`<button class="prev-btn">prev</button>`);
-  console.log(btns);
   container.innerHTML = btns.join("");
 };
 

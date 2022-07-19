@@ -17,8 +17,26 @@ const init = async () => {
   // displayFollowers(paginate(followers)[0]);
   title.textContent = "pagination";
   pages = paginate(followers);
-  console.log(pages);
   setupUI();
 };
-
+btnContainer.addEventListener("click", function (e) {
+  if (e.target.classList.contains("btn-container")) return;
+  if (e.target.classList.contains("page-btn")) {
+    console.log(e.target.dataset.index);
+    index = parseInt(e.target.dataset.index);
+  }
+  if (e.target.classList.contains("next-btn")) {
+    index++;
+    if (index > pages.length - 1) {
+      index = 0;
+    }
+  }
+  if (e.target.classList.contains("prev-btn")) {
+    index--;
+    if (index < 0) {
+      index = pages.length - 1;
+    }
+  }
+  setupUI();
+});
 window.addEventListener("load", init);
